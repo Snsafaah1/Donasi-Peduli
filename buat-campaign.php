@@ -5,7 +5,11 @@
 	<html>
 	<head>
 		<meta charset="utf-8">
+<<<<<<< HEAD
 		<title>Buat Campaignnnnnnn.</title>
+=======
+		<title>Buat Campaignnnnnnnnnnnnnnnnn</title>
+>>>>>>> a63fe9b94ce20ed690b835c250bac1b47e185a5d
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
 		<!-- <link rel="shortcut icon" href=""> -->
