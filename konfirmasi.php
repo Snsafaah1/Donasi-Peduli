@@ -5,7 +5,7 @@
 <html>
     
 <head>
-    <title>Konfirmasi Pembayaran</title>
+    <title>Konfirmasiii Pembayaran</title>
     <link rel="stylesheet" href="css/style-konfirmasi-pembayaran.css">
     <link rel="stylesheet" href="css/style-profil.css">
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
