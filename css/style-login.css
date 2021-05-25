@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.tulisan{
+    font-size: 18px;
+    color: #000000;
+    background: #f2f2f2;
+}
+body{
+    background-image: linear-gradient( rgba(0, 0, 0, 0.6) rgba(0, 0, 0, 0.6));
+    background:  url('../images/gambar.background.jpg');
+    font-family: sans-serif;
+    background-size: cover;
+    height: 100vh;
+    background-position: center;
+    background-attachment: fixed;
+
+}
+.login-page{
+    width: 360px;
+    padding: 10% 0 0 0;
+    margin: auto;
+}
+.form{
+    background: rgba(7, 195, 195, 0.8);
+    position: relative;
+    z-index: 1;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 75px 45px 45px;
+    text-align: center;
+    border-radius: 10px;
+    height: 250px;
+}
+.form input{
+    font-family: sans-serif;
+    outline: 1;
+    background: #f2f2f2;
+    width: 80%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: boreder-box;
+    font-size: 14px;
+    border-radius: 5px;
+    color: rgb(84,84,87);
+}
+.form .tombol{
+    display: inline-block;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #3a57d8;
+    width: 80%;
+    border: 0;
+    padding: 15px;
+    color: #ffff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.form .tombol:hover,
+.form .tombol:active{
+    background: #072299;
+}
+.form .message{
+    color: #ffff;
+    font-size: 15px;
+    margin: 15px 0 0;
+
+}
+.form .message {
+    color: #ffff;
+    text-decoration: none;
+}
+.form .register-form{
+    display: none;
+}

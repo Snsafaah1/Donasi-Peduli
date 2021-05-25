@@ -1,0 +1,544 @@
+/*@font-face {
+	font-family: "true-crimes";
+	src: url('../fonts/true-crimes.ttf') format('truetype');
+}*/
+
+
+/* ----------- Body ----------- */
+body {
+	background-color: rgba(235, 248, 247, 1);
+	background-repeat: no-repeat;
+	
+	font: 16px/18px arial;
+	z-index: 1;
+}
+/* ^^^^^^^^^^^^ TOP-BAR ^^^^^^^^^^^^ */
+.top-bar {
+	width: 100%;
+	height: 60px;
+	background-color: rgba(26, 27, 27, 1);
+	padding: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;	
+	box-sizing: border-box;
+	z-index: 999;
+	display: flex;
+	justify-content: space-between;
+}
+
+.top-bar .judul {
+	width: 45%;
+	height: 60px;
+
+	background-color: white;s
+
+	margin: 0;
+	padding: 1px 3px;
+	box-sizing: border-box;
+}
+
+.top-bar .header {
+	width: 50%;
+	height: 60px;
+
+	margin: 0;
+	padding: 1px 3px;
+	box-sizing: border-box;
+
+	line-height: 60px;
+	
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.top-bar .header img {
+	line-height: 60px;
+	margin-right: 10px;
+}
+
+.top-bar .header h3 {
+	margin: 0 10px;
+	color: white;
+	cursor: default;
+}
+
+.top-bar .header h3 a {
+	text-decoration: none;
+	color: white;
+	cursor: pointer;
+}
+
+.top-bar .header h3 a:hover {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* ^^^^^^^^^^^^ CONTAINER ^^^^^^^^^^^^ */
+.container {
+	width: 1200px;
+
+	margin: 80px auto 0 auto;
+	padding : 5px 5px;
+
+	box-sizing: border-box;
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+/* *** FORM ****/
+.container .thumb {
+	width: 40%;
+
+	margin: 0;
+	padding: 2px;
+
+	box-sizing: border-box;
+	overflow: hidden;
+
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.container .thumb img{
+	width: 100%;
+}
+
+
+/* *** INFO ****/
+.container .info {
+	background-color: rgba(42, 63, 115, 1);
+	width: 32%;
+	margin: 0;
+	padding: 2px;
+
+	box-sizing: border-box;
+	border-radius: 20px;
+
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+/* *** INFO - button ****/
+.container .info .button {
+	width: 100%;
+
+	margin: 30px auto 5px auto;
+	padding: 0;
+
+	overflow: hidden;
+	box-sizing: border-box;
+
+	display: flex;
+	justify-content: center;
+}
+
+.container .info .button button {
+	width: 300px;
+	height: 40px;
+	background-color: rgba(227, 245, 114, 1);
+
+	outline: none;
+
+	border: none;
+	border-radius: 40px;
+	font-weight: bold;
+	color: rgba(0, 0, 0, 1);
+	font-size: 17px;
+	cursor: default;
+}
+
+/* *** INFO - text1 ****/
+.container .info .text1 {
+	width: 100%;
+	
+	margin: 5px auto 5px auto;
+	padding: 0 50px;
+	
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.container .info .text1 h4 {
+	color: white;
+	font-family: "Salsa", arial, serif;
+	line-height: 25px;
+	cursor: default;
+
+}
+
+/* *** INFO - text2 ****/
+.container .info .text2 {
+	width: 100%;
+	
+	margin: 5px auto 30px auto;
+	padding: 0 50px;
+
+	box-sizing: border-box;
+	overflow: hidden;
+
+	text-align: center;
+}
+
+.container .info .text2 h5 {
+	margin: 0 auto;
+	color: rgba(150, 21, 21, 1);
+	font-family: "Salsa", arial, serif;
+	line-height: 20px;
+	font-size: 12px;
+	background-color: white;
+	cursor: default;
+}
+
+
+
+/* *** ANGKOR ****/
+.container .angkor {
+	width: 25%;
+
+	margin: 0;
+	padding: 2px;
+
+	box-sizing: border-box;
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+/* *** ANGKOR - judul ****/
+.container .angkor .judul {
+	width: 100%;
+	margin: 80px auto 10px auto;
+	padding: 0;
+
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.container .angkor .judul h3{
+	font-family: "Salsa", arial, serif;
+	font-weight: bold;
+	font-size: 20px; 
+	margin: 5px 0;
+	cursor: default;
+}
+
+/* *** ANGKOR - nav ****/
+.container .angkor .nav {
+	width: 100%;
+	margin: 10px auto 80px auto;
+	padding: 0;
+}
+
+.container .angkor .nav h4 a {
+	margin-left: 15px;
+	text-decoration: none;
+	color: black;
+	line-height: 40px;
+	cursor: pointer;
+}
+
+.container .angkor .nav h4 a:hover {
+	border-bottom: 3px solid rgba(42, 63, 115, 1);
+	font-weight: bold;
+}
+
+
+
+
+
+/* ^^^^^^^^^^^^ DATA ^^^^^^^^^^^^ */
+.data {
+	width: 1200px;
+	margin: 60px auto 0 auto;
+	padding: 0;
+}
+
+.data form {
+	width: 100%;
+	padding : 5px 5px;
+
+	box-sizing: border-box;
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-start;	
+}
+
+/* *** ISI ****/
+.data form .kotak {
+	width: 32%;
+	background-color: white;
+
+	border-radius: 10px;
+
+	box-sizing: border-box;
+	overflow: hidden;
+
+	margin: 6px;
+	padding: 20px 30px;
+
+}
+
+.data form .kotak label {
+	color: black;
+	cursor: pointer;
+	font-family: "Salsa", arial, serif;
+	font-weight: bold;
+}
+
+.data form .kotak input {
+	background-color: rgba(225, 225, 190, 1);
+	width: 100%;
+	height: 30px;
+
+	padding: 0 15px;
+
+	border-radius: 20px;
+	border: none;
+	outline: none;
+
+	box-sizing: border-box;
+	overflow: hidden;
+
+	font-family: "Salsa", arial, serif;
+	font-size: 16px;
+}
+
+.data form .kotak textarea {
+	background-color: rgba(225, 225, 190, 1);
+	width: 100%;
+	height: 80px;
+
+	padding: 5px 15px;
+
+	border-radius: 20px;
+	border: none;
+	outline: none;
+	overflow: hidden;
+
+	box-sizing: border-box;
+	font-family: "Salsa", arial, serif;
+	font-size: 16px;
+}
+
+.data form .kotak span input {
+	background-color: rgba(225, 225, 190, 1);
+	width: 100%;
+	height: 160px;
+
+	padding: 56px 15px;
+
+	border-radius: 20px;
+	border: none;
+	outline: none;
+	overflow: hidden;
+
+	box-sizing: border-box;
+	font-family: "Salsa", arial, serif;
+	font-size: 16px;
+} 
+
+.data form .kotak .check {
+	width: 100%;
+	padding: 10px 5px;
+	margin: 0;
+
+	background-color: rgba(150, 28, 27, 1);
+
+	border-radius: 30px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.data form .kotak .check .checkbox {
+	width: 10%;
+	margin: 0;
+	justify-content: center;
+}
+
+.data form .kotak .check .checkbox input {
+	width: 50%;
+}
+
+.data form .kotak .check .label {
+	width: 90%;
+	margin: 0;
+	padding-top: 8px;
+}
+
+.data form .kotak .check .label label p{
+	line-height: 20px;
+	text-align: justify;
+	color: white;
+	font-size: 14px;
+}
+
+.data form .kotak button {
+	width: 100%;
+	height: 60px;
+	background-color: rgba(175, 175, 175, 1);
+
+	margin: 10px auto;
+
+	outline: none;
+	border: none;
+	border-radius: 20px;
+	font-weight: bold;
+	color: rgba(0, 0, 0, 1);
+	font-size: 17px;
+	
+	cursor: pointer;
+}
+
+.data form .kotak button:hover {
+	background-color: rgba(175, 175, 175, 0.5);
+}
+
+
+
+
+/* ^^^^^^^^^^^^ POP-UP ^^^^^^^^^^^^ */
+.popup {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+
+	width: 50%;
+
+	background-color: white;
+	border-radius: 20px;
+	border : 3px solid black;
+	padding: 20px 0;
+
+	box-sizing: border-box;
+	overflow: hidden;
+
+	display: flex;
+	text-align: center;
+	flex-wrap: wrap;
+	flex-direction: column;
+
+	transform: translate(-50%, -50%) scale(0);
+	transition: 200ms ease-in-out;
+
+	z-index: 9999;
+}
+
+.popup.active {
+	transform:  translate(-50%, -50%) scale(1);
+}
+
+.popup .icon {
+	width: 100%;
+	height: 80px;
+
+	margin: 3px 0;
+	
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.popup i {
+	color: rgb(26, 255, 26);
+	font-size: 80px;
+}
+
+.popup .teks {
+	width: 100%;
+	
+	margin: 3px 0;
+	padding: 0 30px;
+
+	box-sizing: border-box;
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.popup .teks h1 {
+	color: black;
+	font-size: 40px;	
+	margin: 20px auto;
+	cursor: default;
+}
+
+.popup .teks p {
+	color: black;
+	font-size: 18px;	
+	cursor: default;
+}
+
+.popup .button {
+	width: 100%;
+	
+	margin: 30px 0 3px 0;
+	padding: 0 30px;
+
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.popup .button button {
+	width: 100px;
+	height: 30px;
+	border: none;
+
+	border-radius: 12px;
+	outline: none;
+	background-color: rgba(0, 0, 0, 1);
+	cursor: pointer;
+}
+
+.popup .button button a{
+	text-decoration: none;
+	font-weight: bold;
+	color: white;
+	font-family: "Salsa", arial, serif;	
+}
+
+.popup .button button:hover {
+	background-color: rgba(0, 0, 0, 0.9);	
+}
+
+
+/* OVERLAY */
+#overlay {
+	position: fixed;
+	opacity: 0;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	pointer-events: none;
+	cursor: default;
+
+	z-index: 9998;
+}
+
+#overlay.active {
+	opacity: 1;
+	pointer-events: all;
+}
+	
+
+
+
+
+
