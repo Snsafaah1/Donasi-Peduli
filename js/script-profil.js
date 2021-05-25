@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
-    change();
     closeButton.addEventListener("click", toggleModal);
     donasi();
     donasiButton.addEventListener("click",donasi);
@@ -30,15 +29,6 @@ function saveprofil(){
     akun["jk"]=jk.value;
     change();
     toggleModal();
-}
-function change(){
-    nama[0].textContent = akun["nama"];
-    nama[1].textContent = akun["nama"];
-    nama[2].value = akun["nama"];
-    email.textContent = akun["email"];
-    alamat.value = akun["alamat"];
-    no.value = akun["no"];
-    jk.value= akun["jk"];
 }
 function toggleModal() {
     modal.classList.toggle("show-modal");

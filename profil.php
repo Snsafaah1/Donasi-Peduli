@@ -1,3 +1,6 @@
+<?php
+    include("config.php");
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,16 +15,34 @@
 <body>
     <div class="navbar">
         <div class="navbar-right">
-            <a href="index.html" class="logo">Peduli.ID</a>
-            <a href="#faq">FAQ | <i class="fa fa-bell"></i></a>
-            <div class="dropdown">
-                <button class="dropbtn nama">Alya Choirum Mahmudah
-                </button> <i class="fa fa-sort-desc"></i>
+            <a href="index.php" class="logo">Peduli.ID</a>
+            <a href="">FAQ</a>
+            <?php
+                session_start();
+                if(isset($_SESSION["email"])) {
+                    $email = $_SESSION["email"];
+                    $query= "SELECT * FROM user where email = '$email' ";
+                    $hasil= mysqli_query($conn,$query);
+                    $hasil= mysqli_fetch_assoc($hasil);
+            ?>
+                <div class="dropdown">
+                <button class="dropbtn nama"> <?php echo $hasil["nama"]; ?> </button> <i class="fa fa-sort-desc"></i>
                 <div class="dropdown-content">
-                  <a href="#">Profil Saya</a>
-                  <a href="#">Keluar</a>
+                  <a href="profil.php">Profil Saya</a>
+                  <a href="logout.php">Keluar</a>
                 </div>
             </div>
+            <?php
+
+                }else{
+                    header("location: login.php");
+            ?>
+                <a href="login.php">Masuk</a>
+                <a href="login.php?p=daftar" class="daftar">Daftar</a>
+            <?php
+                }
+             ?>
+            
         </div>
     </div>
 
@@ -35,8 +56,8 @@
                     <img src="images/profile.png" alt="">
                 </div>
                 <div class="text-wrap">
-                    <p class="nama">Alya Choirum Mahmudah</p>
-                    <p class="email">alyachoirum@gmail.com</p>
+                    <p class="nama"><?php echo $hasil["nama"]; ?></p>
+                    <p class="email"><?php echo $hasil["email"]; ?></p>
                 </div>
             </div>
             <div class="profile-right">

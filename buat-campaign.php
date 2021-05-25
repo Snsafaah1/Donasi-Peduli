@@ -1,10 +1,6 @@
 <?php
-	$kondisi="ldsd";
-	if($kondisi != "login"){
-		echo "a";
-		header('Location: login.php');
-	}
-?>
+	include("config.php");
+ ?>
 <!DOCTYPE html>
 	<html>
 	<head>
@@ -24,20 +20,37 @@
 
 	<body>
 		<div class="navbar">
-	        <div class="navbar-right">
-	            <a href="index.html" class="logo">Peduli.ID</a>
-	            <a href="#faq">FAQ | <i class="fa fa-bell"></i></a>
-	            <div class="dropdown">
-	                <button class="dropbtn nama">Alya Choirum Mahmudah
-	                </button> <i class="fa fa-sort-desc"></i>
-	                <div class="dropdown-content">
-	                  <a href="#">Profil Saya</a>
-	                  <a href="#">Keluar</a>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-		<div class="container">
+	 	<div class="navbar-right">
+	 		<a href="index.php" class="logo">Peduli.ID</a>
+	 		<a href="">FAQ</a>
+	 		<?php
+	 			session_start();
+	 			if(isset($_SESSION["email"])) {
+	 				$email = $_SESSION["email"];
+	 				$query= "SELECT * FROM user where email = '$email' ";
+	 				$hasil= mysqli_query($conn,$query);
+	 				$hasil= mysqli_fetch_assoc($hasil);
+	 		?>
+	 			<div class="dropdown">
+                <button class="dropbtn nama"> <?php echo $hasil["nama"]; ?> </button> <i class="fa fa-sort-desc"></i>
+                <div class="dropdown-content">
+                  <a href="profil.php">Profil Saya</a>
+                  <a href="logout.php">Keluar</a>
+                </div>
+            </div>
+	 		<?php
+
+	 			}else{
+	 				header("location: login.php");
+	 		?>
+	 			<a href="login.php">Masuk</a>
+	 			<a href="login.php?p=daftar" class="daftar">Daftar</a>
+	 		<?php
+	 			}
+	 		 ?>
+	 		
+	 	</div>
+	</div>		<div class="container">
 			<div class="thumb">
 				<img src="logo/undraw_empty_xct9.png">
 			</div>
@@ -63,17 +76,17 @@
 					<h3>Isi Data Pengajuan Pasien :</h3>
 				</div>
 				<div class="nav">
-					<h4><a href="index.html#col1">1. Penanggung Jawab</a></h4>
-					<h4><a href="index.html#col2">2. Informasi Detail</a></h4>
-					<h4><a href="index.html#col3">3. Foto</a></h4>
-					<h4><a href="index.html#col4">4. Informasi Kebutuhan</a></h4>
-					<h4><a href="index.html#col5">5. Review & Selesai </a></h4>
+					<h4><a href="index.php#col1">1. Penanggung Jawab</a></h4>
+					<h4><a href="index.php#col2">2. Informasi Detail</a></h4>
+					<h4><a href="index.php#col3">3. Foto</a></h4>
+					<h4><a href="index.php#col4">4. Informasi Kebutuhan</a></h4>
+					<h4><a href="index.php#col5">5. Review & Selesai </a></h4>
 				</div>
 			</div>
 		</div>
 
 		<div class="data">
-			<form action=" " method="POST" enctype="multipart/form-data">
+			<form action="aksibuatcampaign.php" method="POST" enctype="multipart/form-data">
 				<div class="kotak" id="col1">
 					<label for="pekerjaan">Pekerjaan</label><br>
 					<input type="text" name="pekerjaan" id="pekerjaan">
@@ -96,7 +109,10 @@
 				</div>
 				<div class="kotak" id="col2">
 					<label for="kategori">Kategori</label><br>
-					<input type="text" name="kategori" id="kategori">
+					<select id="kategori" name="kategori">
+					  <option value="1">Kemanusiaan</option>
+					  <option value="2">Bencana</option>
+					</select>
 					<br><br>
 					
 					<label for="judul">Judul</label><br>
@@ -142,7 +158,7 @@
 						</div>
 					</div><br><br>
 	
-					<button data-modal-target="#popup" type="button" id="btn">KONFIRMASI</button>			
+					<input type="submit" id="btn" value="KONFIRMASI">			
 				</div>
 			
 		</div>
@@ -159,7 +175,7 @@
 				<p>Terimakasih</p>	
 			</div>
 			<div class="button">
-				<button data-close-button class="close-button" type="submit"><a href="index.html">OK</a></button>	
+				<button data-close-button class="close-button" type="submit"><a href="index.php">OK</a></button>	
 			</div>
 		</div> 
 		<div id="overlay"></div>
