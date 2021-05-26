@@ -48,21 +48,22 @@
         </div>
     </div>
         <div class="kiri">
-            <h3>Donasi bencana indonesia tanah longsor</h3>
+            <h3>Donasi bencana indonesia tanah longsor</h3><br>
+            <h5>Keterangan bencana ini terjadi di xxxxxxxxx</h5><br>
             <img src="images/campaign1.jpg" alt="">
         </div> 
         <div class="kanan">
             <div class="kotak">
                 <div class="form">
-                    <h3>Mohon Isi Formulir Donasi</h3>
+                    <h3>Mohon Isi Formulir Donasi</h3><br>
                     <form class="register">
                         <input type="number" id="nominal" placeholder="Nominal (Rp)">
                         <textarea id="pesan" cols="30" rows="10" placeholder="Pesan Yang disampaikan"></textarea> 
-                        Transfer Pembayaran : <br>
+                        Transfer Pembayaran : <br><br>
                         <img src="images/tf.png" alt="rekening bank">   
-                    </form>
+                    </form><br>
                     <button onclick="submitdata()">Donasi</button>
-                    <a href="konfirmasi.html"><button>Konfirmasi</button></a>
+                    <a href="konfirmasi.php"><button>Konfirmasi</button></a>
                 </div>
             </div> 
         </div>

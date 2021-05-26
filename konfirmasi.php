@@ -44,14 +44,13 @@
     </div>
     <div class="kanan"><div class="kotak">
         <div class="form">
-            <h3>Konfirmasi Pembayaran</h3>
+            <h3>Konfirmasi Pembayaran</h3><br>
             <form class="regiser">
-                <input type="text" placeholder="Nama Donatur">
                 <input type="text" placeholder="Rekening atas Nama">
                 <input type="number" id= "nominal"placeholder="Nominal (Rp)">
                 Masukkan Bukti Pembayaran (JPEG,PNG) <br>
                 <input id="upload" type="file" placeholder="Masukkan Bukti Pembayaran">
-                <button onclick="confirm()">Konfirmasi</button>
+                <button onclick="confirm()">Konfirmasi</button><br><br>
                 <img id="thank"src="images/hiasan.jpg" alt="">
             </form>
         </div>
