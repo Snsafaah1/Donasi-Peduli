@@ -174,53 +174,29 @@
 		</div>
 		<div class="konten">
 			<div class="wrap">
-				<div class="campaign">
-					<img src="images/campaign1.jpg">
-					<div class="text-campaign">
-						<p>Donasi bencana indonesia tanah longsor</p>
-						<div class="back-persen">
-							<hr width="70%">
-						</div>
-						<div>
-							<span>Terkumpul</span><span class="right-float">Donatur</span>
-						</div>
-						<div>
-							<span>Rp.852.000</span><span class="right-float">45</span>
-						</div>
-					</div>
-				</div>
-				<div class="campaign">
-					<img src="images/campaign1.jpg">
-					<div class="text-campaign">
-						<p>Donasi bencana indonesia tanah longsor</p>
-
-
-						<div class="back-persen">
-							<hr width="70%">
-						</div>
-						<div>
-							<span>Terkumpul</span><span class="right-float">Donatur</span>
-						</div>
-						<div>
-							<span>Rp.852.000</span><span class="right-float">45</span>
+				<?php
+				$query = mysqli_query($conn,"SELECT * FROM campaign");
+				?>
+				<?php
+				foreach ($query as $campaign) { ?>
+					<div class="campaign">
+						<img src="foto/<?php echo $campaign['foto']; ?>" height="150px">
+						<div class="text-campaign">
+							<p><?php echo $campaign['judul']; ?></p>
+							<div class="back-persen">
+								<hr width="70%">
+							</div>
+							<div>
+								<span>Terkumpul</span><span class="right-float">Donatur</span>
+							</div>
+							<div>
+								<span>Rp.852.000</span><span class="right-float">45</span>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="campaign">
-					<img src="images/campaign1.jpg">
-					<div class="text-campaign">
-						<p>Donasi bencana indonesia tanah longsor</p>
-						<div class="back-persen">
-							<hr width="70%">
-						</div>
-						<div>
-							<span>Terkumpul</span><span class="right-float">Donatur</span>
-						</div>
-						<div>
-							<span>Rp.852.000</span><span class="right-float">45</span>
-						</div>
-					</div>
-				</div>
+				<?php 
+					}
+				 ?>
 				<div class="campaign selengkapnya">
 					<a href="#" class="selengkapnya-btn">Tampilkan lebih banyak</a>
 				</div>
