@@ -22,11 +22,11 @@
                 if(isset($_SESSION["email"])) {
                     $email = $_SESSION["email"];
                     $query= "SELECT * FROM user where email = '$email' ";
-                    $user= mysqli_query($conn,$query);
-                    $user= mysqli_fetch_assoc($user);
+                    $hasil= mysqli_query($conn,$query);
+                    $hasil= mysqli_fetch_assoc($hasil);
             ?>
                 <div class="dropdown">
-                <button class="dropbtn nama"> <?php echo $user["nama"]; ?> </button> <i class="fa fa-sort-desc"></i>
+                <button class="dropbtn nama"> <?php echo $hasil["nama"]; ?> </button> <i class="fa fa-sort-desc"></i>
                 <div class="dropdown-content">
                   <a href="profil.php">Profil Saya</a>
                   <a href="logout.php">Keluar</a>
@@ -56,8 +56,8 @@
                     <img src="images/profile.png" alt="">
                 </div>
                 <div class="text-wrap">
-                    <p class="nama"><?php echo $user["nama"]; ?></p>
-                    <p class="email"><?php echo $user["email"]; ?></p>
+                    <p class="nama"><?php echo $hasil["nama"]; ?></p>
+                    <p class="email"><?php echo $hasil["email"]; ?></p>
                 </div>
             </div>
             <div class="profile-right">
@@ -71,7 +71,7 @@
     <div class="menu">
         <div class="menu-wrap">
             <div class="menu-left">
-                <div class="edit active">
+                <div class="edit">
                     <a href="profil.php"><i class="fa fa-pencil-square-o"></i> Edit Profil</a>
                 </div>
                 <div class="donasi">
@@ -80,52 +80,32 @@
                 <div class="pengajuan">
                     <a href="profil-pengajuan.php"><i class="fa fa-file-text-o"></i> Pengajuan Campaign</a>
                 </div>
-                <div class="riwayat">
+                <div class="riwayat active">
                     <a href="profil-riwayat.php"><i class="fa fa-history"></i> Riwayat Transaksi</a>
                 </div>
             </div>
             <div class="menu-right">
-                <div class="edit-wrap">
-                    <?php
-                        if($user['nama'] == "" || $user['telepon'] == "" || $user['jenis_kelamin'] == "" || $user['alamat'] == ""){ ?>
-                            <h4>Anda belum melengkapi profil!</h4>
-                    <?php
-                        }
-                     ?>
-                    
-                    <form action="aksiupdateprofil.php" method="POST">
-                        <table>
-                            <tr>
-                                <td>Nama</td>
-                                <td><input type="text" class="nama" placeholder="nama" value="<?php  echo $user['nama'];?>"></td>
-                            </tr>
-                            <tr>
-                                <td>Alamat</td>
-                                <td><input type="text" class="alamat" placeholder="alamat" value="<?php  echo $user['alamat'];?>"></td>
-                            </tr>
-                            <tr>
-                                <td>No. Telp</td>
-                                <td><input type="text" class="no" placeholder="no telepon" value="<?php  echo $user['telepon'];?>"></td>
-                            </tr>
-                            <tr>
-                                <td>Jenis Kelamin</td>
-                                <td>
-                                    <select class="jk" name="jenis_kelamin">
-                                    <option value="l" selected disabled>Silahan pilih</option>
-                                    <option value="l" <?php if($user['jenis_kelamin'] == "l"){echo "selected";} ?>>Laki-Laki</option>
-                                    <option value="p" <?php if($user['jenis_kelamin'] == "p"){echo "selected";} ?> >Perempuan</option>
-                                  </select></td>
-                            </tr>
-                        </table>
-                        <div class="tombol-wrap">
-                            <div>
-                                <input type="submit" class="save-tombol" value="Save">
-                            </div>
-                            <div>
-                                <input type="reset" class="cancel-tombol" value="Cancel">
-                            </div>
-                        </div>
-                    </form>
+                <div class="riwayat-wrap">
+                    <div class="wrapped">
+                        <h2>Riwayat</h2>
+                        <p>Menampilkan riwayat transaksi yang telah kamu lakukan</p>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Nama Campaign</th>
+                            <th>Total Donasi</th>
+                            <th>Qty</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr>
+                            <td>1 Maret 2021, 17:50</td>
+                            <td>Donasi untuk Viara Hikmatun nisa<br>Kode Transaksi: AB1234</td>
+                            <td>Rp. 500.000,-</td>
+                            <td>X1</td>
+                            <td><a href="#">Menunggu konfirmasi</a></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>

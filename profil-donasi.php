@@ -22,11 +22,11 @@
                 if(isset($_SESSION["email"])) {
                     $email = $_SESSION["email"];
                     $query= "SELECT * FROM user where email = '$email' ";
-                    $user= mysqli_query($conn,$query);
-                    $user= mysqli_fetch_assoc($user);
+                    $hasil= mysqli_query($conn,$query);
+                    $hasil= mysqli_fetch_assoc($hasil);
             ?>
                 <div class="dropdown">
-                <button class="dropbtn nama"> <?php echo $user["nama"]; ?> </button> <i class="fa fa-sort-desc"></i>
+                <button class="dropbtn nama"> <?php echo $hasil["nama"]; ?> </button> <i class="fa fa-sort-desc"></i>
                 <div class="dropdown-content">
                   <a href="profil.php">Profil Saya</a>
                   <a href="logout.php">Keluar</a>
@@ -56,8 +56,8 @@
                     <img src="images/profile.png" alt="">
                 </div>
                 <div class="text-wrap">
-                    <p class="nama"><?php echo $user["nama"]; ?></p>
-                    <p class="email"><?php echo $user["email"]; ?></p>
+                    <p class="nama"><?php echo $hasil["nama"]; ?></p>
+                    <p class="email"><?php echo $hasil["email"]; ?></p>
                 </div>
             </div>
             <div class="profile-right">
@@ -71,10 +71,10 @@
     <div class="menu">
         <div class="menu-wrap">
             <div class="menu-left">
-                <div class="edit active">
+                <div class="edit">
                     <a href="profil.php"><i class="fa fa-pencil-square-o"></i> Edit Profil</a>
                 </div>
-                <div class="donasi">
+                <div class="donasi active">
                     <a href="profil-donasi.php"><i class="fa fa-user"></i> Donasi</a>
                 </div>
                 <div class="pengajuan">
@@ -85,47 +85,12 @@
                 </div>
             </div>
             <div class="menu-right">
-                <div class="edit-wrap">
-                    <?php
-                        if($user['nama'] == "" || $user['telepon'] == "" || $user['jenis_kelamin'] == "" || $user['alamat'] == ""){ ?>
-                            <h4>Anda belum melengkapi profil!</h4>
-                    <?php
-                        }
-                     ?>
-                    
-                    <form action="aksiupdateprofil.php" method="POST">
-                        <table>
-                            <tr>
-                                <td>Nama</td>
-                                <td><input type="text" class="nama" placeholder="nama" value="<?php  echo $user['nama'];?>"></td>
-                            </tr>
-                            <tr>
-                                <td>Alamat</td>
-                                <td><input type="text" class="alamat" placeholder="alamat" value="<?php  echo $user['alamat'];?>"></td>
-                            </tr>
-                            <tr>
-                                <td>No. Telp</td>
-                                <td><input type="text" class="no" placeholder="no telepon" value="<?php  echo $user['telepon'];?>"></td>
-                            </tr>
-                            <tr>
-                                <td>Jenis Kelamin</td>
-                                <td>
-                                    <select class="jk" name="jenis_kelamin">
-                                    <option value="l" selected disabled>Silahan pilih</option>
-                                    <option value="l" <?php if($user['jenis_kelamin'] == "l"){echo "selected";} ?>>Laki-Laki</option>
-                                    <option value="p" <?php if($user['jenis_kelamin'] == "p"){echo "selected";} ?> >Perempuan</option>
-                                  </select></td>
-                            </tr>
-                        </table>
-                        <div class="tombol-wrap">
-                            <div>
-                                <input type="submit" class="save-tombol" value="Save">
-                            </div>
-                            <div>
-                                <input type="reset" class="cancel-tombol" value="Cancel">
-                            </div>
-                        </div>
-                    </form>
+                <div class="donasi-wrap wrapped">
+                    <h2>Donasi</h2>
+                    <p>Menampilkan donasi yang sudah selesai melalui Peduli.ID</p>
+                    <div>
+                        <a>Semua data telah ditampilkan.</a>
+                    </div>
                 </div>
             </div>
         </div>

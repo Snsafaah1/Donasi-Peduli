@@ -179,7 +179,7 @@
 				?>
 				<?php
 				foreach ($query as $campaign) { ?>
-					<div class="campaign">
+					<div class="campaign" onclick="donasi('<?php echo $campaign['id_campaign']; ?>')">
 						<img src="foto/<?php echo $campaign['foto']; ?>" height="150px">
 						<div class="text-campaign">
 							<p><?php echo $campaign['judul']; ?></p>
@@ -205,11 +205,10 @@
 	</div>
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.campaign').click(function(){
-			window.location.href = 'pembayaran.php';
-		});
-	});
+<script type="application/javascript">
+
+	function donasi(id){
+			window.location.href = 'pembayaran.php?id_campaign='+id;
+	}
 </script>
 </html>

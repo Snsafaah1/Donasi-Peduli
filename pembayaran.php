@@ -48,15 +48,23 @@
         </div>
     </div>
         <div class="kiri">
-            <h3>Donasi bencana indonesia tanah longsor</h3><br>
-            <h5>Keterangan bencana ini terjadi di xxxxxxxxx</h5><br>
-            <img src="images/campaign1.jpg" alt="">
+            <?php
+                $id_campaign = $_GET['id_campaign'];
+                $id_user = $_SESSION['id_user'];
+                $campaign = mysqli_query($conn,"SELECT * FROM campaign where id_campaign = '$id_campaign' ");
+                $campaign = mysqli_fetch_array($campaign);
+             ?>
+            <h3><?php echo $campaign['judul'] ?></h3><br>
+            <h5>Keterangan: <?php echo $campaign['alasan_penggalangan']; ?></h5><br>
+            <img src="foto/<?php echo $campaign['foto']; ?>" alt="" height="300px">
         </div> 
         <div class="kanan">
             <div class="kotak">
                 <div class="form">
                     <h3>Mohon Isi Formulir Donasi</h3><br>
-                    <form class="register">
+                    <form action="aksipembayaran.php" class="register" method="POST">
+                        <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
+                        <input type="hidden" name="id_campaign" value="<?php echo $id_campaign; ?>">
                         <input type="number" id="nominal" placeholder="Nominal (Rp)">
                         <textarea id="pesan" cols="30" rows="10" placeholder="Pesan Yang disampaikan"></textarea> 
                         Transfer Pembayaran : <br><br>
