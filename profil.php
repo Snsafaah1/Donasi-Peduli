@@ -1,5 +1,6 @@
 <?php
     include("config.php");
+    include 'function.php';
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +17,6 @@
     <div class="navbar">
         <div class="navbar-right">
             <a href="index.php" class="logo">Peduli.ID</a>
-            <a href="">FAQ</a>
             <?php
                 session_start();
                 if(isset($_SESSION["email"])) {
@@ -68,7 +68,7 @@
                         $dana = mysqli_query($conn,"SELECT SUM(nominal) as total FROM donasi where id_user = '$id_user' AND status = 'Diterima'");
                         $dana = mysqli_fetch_array($dana);
                     ?>
-                <p class="price">Rp. <?php echo $dana['total']; ?>,-</p>
+                <p class="price"><?php echo rupiah($dana['total']); ?>,-</p>
                 </div>
             </div>
         </div>

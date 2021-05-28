@@ -1,5 +1,6 @@
 <?php
     include("config.php");
+    include 'function.php';
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +17,6 @@
     <div class="navbar">
         <div class="navbar-right">
             <a href="index.php" class="logo">Peduli.ID</a>
-            <a href="">FAQ</a>
             <?php
                 session_start();
                 if(isset($_SESSION["email"])) {
@@ -68,7 +68,7 @@
                         $dana = mysqli_query($conn,"SELECT SUM(nominal) as total FROM donasi where id_user = '$id_user' AND status = 'Diterima'");
                         $dana = mysqli_fetch_array($dana);
                     ?>
-                <p class="price">Rp. <?php echo $dana['total']; ?>,-</p>
+                <p class="price"><?php echo rupiah($dana['total']); ?>,-</p>
                 </div>
             </div>
         </div>
@@ -102,9 +102,28 @@
                             <th>Kategori</th>
                             <th>Status</th>
                         </tr>
-                        <tr>
-                            <td colspan="5">Belum ada pengajuan yang tercatat</td>
-                        </tr>
+                        <?php
+                            $id_user= $_SESSION['id_user'];
+                            $query = mysqli_query($conn,"SELECT * FROM campaign INNER JOIN kategori where campaign.id_kategori = kategori.id_kategori AND campaign.id_user = '$id_user' ");
+                            if(mysqli_num_rows($query)>0){
+                                foreach ($query as $campaign) { ?>
+                                <tr>
+                                    <td><?php echo $campaign['judul']; ?></td>
+                                    <td><?php echo $campaign['alasan_penggalangan']; ?></td>
+                                    <td><?php echo $campaign['tanggal_buat']; ?></td>
+                                    <td><?php echo $campaign['nama']; ?></td>
+                                    <td><?php echo $campaign['status'] ?></td>
+                                </tr>
+                                 <?php
+                                }
+                            }else{ ?>
+
+                                <tr>
+                                    <td colspan="5">Belum ada pengajuan yang tercatat</td>
+                                </tr>
+                        <?php
+                            }
+                         ?>
                     </table>
                 </div>
             </div>

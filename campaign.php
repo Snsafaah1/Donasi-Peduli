@@ -43,21 +43,19 @@
 	 	</div>
 	</div>
 	<div class="back">
-		<div class="jumbotron">
-			<div class="img-jumbotron">
-				<img src="images/avatar-women.png">
-			</div>
-			<div class="text-jumbotron">
-				<h3>Peduli.ID</h3>
-				<p>Ribuan pasien di Indonesia membutuhkan bantuan biaya pengobatan,</p>
-				<p>Mari berdonasi dan membantu mereka melalu Peduli.ID</p>
-				<a href="buat-campaign.php">Buat Campaign</a>
-			</div>
+		<br>
+		<br>
+		<div class="judul">
+			<p style="text-align: center;font-size:28px;">Explore Campaign</p>
+			<br>
+		</div>
+		<div class="konten">
+			<a href="buat-campaign	.php" class="selengkapnya-btn">Buat Campaign</a>
 		</div>
 		<div class="konten">
 			<div class="wrap">
 				<?php
-				$query = mysqli_query($conn,"SELECT * FROM campaign ORDER BY tanggal_buat DESC LIMIT 0,3");
+				$query = mysqli_query($conn,"SELECT * FROM campaign");
 				?>
 				<?php
 				foreach ($query as $campaign) { ?>
@@ -87,9 +85,6 @@
 				<?php 
 					}
 				 ?>
-				<div class="campaign selengkapnya">
-					<a href="campaign.php" class="selengkapnya-btn">Tampilkan lebih banyak</a>
-				</div>
 			</div>
 		</div>
 	</div>

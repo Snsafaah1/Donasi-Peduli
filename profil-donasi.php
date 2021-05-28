@@ -1,5 +1,6 @@
 <?php
     include("config.php");
+    include 'function.php';
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +17,6 @@
     <div class="navbar">
         <div class="navbar-right">
             <a href="index.php" class="logo">Peduli.ID</a>
-            <a href="">FAQ</a>
             <?php
                 session_start();
                 if(isset($_SESSION["email"])) {
@@ -68,8 +68,9 @@
                         $dana = mysqli_query($conn,"SELECT SUM(nominal) as total FROM donasi where id_user = '$id_user' AND status = 'Diterima'");
                         $dana = mysqli_fetch_array($dana);
                     ?>
-                <p class="price">Rp. <?php echo $dana['total']; ?>,-</p>
+                <p class="price"><?php echo rupiah($dana['total']); ?>,-</p>
                 </div>
+
             </div>
         </div>
     </div>
@@ -90,12 +91,49 @@
                 </div>
             </div>
             <div class="menu-right">
-                <div class="donasi-wrap wrapped">
-                    <h2>Donasi</h2>
-                    <p>Menampilkan donasi yang sudah selesai melalui Peduli.ID</p>
-                    <div>
-                        <a>Semua data telah ditampilkan.</a>
+                <div class="riwayat-wrap">
+                    <div class="wrapped">
+                        <h2>Donasi</h2>
+                        <p>Menampilkan donasi yang sudah selesai melalui Peduli.ID</p>
                     </div>
+                    <table>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Nama Campaign</th>
+                            <th>Total Donasi</th>
+                            <th>Qty</th>
+                            <th>Status</th>
+                        </tr>
+                        <?php
+                            $id_user= $_SESSION['id_user'];
+                            $query = mysqli_query($conn,"SELECT donasi.tanggal_buat, campaign.judul, donasi.id_donasi,donasi.nominal,donasi.status FROM donasi INNER JOIN campaign where donasi.id_campaign = campaign.id_campaign AND donasi.id_user = '$id_user' AND donasi.status = 'Diterima' ");
+                            if(mysqli_num_rows($query)>0){
+                                foreach ($query as $donasi) { ?>
+                                <tr>
+                                    <td><?php echo $donasi['tanggal_buat'] ?></td>
+                                    <td><?php echo $donasi['judul'] ?><br>Kode Transaksi: <?php echo $donasi['id_donasi'] ?></td>
+                                    <td><?php echo rupiah($donasi['nominal']); ?>,-</td>
+                                    <td>@1</td>
+                                    <td>
+                                        <?php if($donasi['status'] == 'Belum Transfer'){ ?>
+                                            <a href="konfirmasi.php?id_donasi=<?php echo $donasi['id_donasi']; ?>"><?php echo $donasi['status'] ?></a>
+                                        <?php }else{ ?>
+                                            <?php echo $donasi['status'] ?>
+                                        <?php } ?>
+                                    </td>
+                                </tr>
+                                 <?php
+                                }
+                            }else{ ?>
+
+                                <tr>
+                                    <td colspan="5">Belom ada riwayat transaksi</td>
+                                </tr>
+                        <?php
+                            }
+                         ?>
+                        
+                    </table>
                 </div>
             </div>
         </div>
