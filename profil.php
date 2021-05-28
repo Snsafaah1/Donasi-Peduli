@@ -21,7 +21,8 @@
                 session_start();
                 if(isset($_SESSION["email"])) {
                     $email = $_SESSION["email"];
-                    $query= "SELECT * FROM user where email = '$email' ";
+                    $id_user = $_SESSION["id_user"];
+                    $query= "SELECT * FROM user where id_user = '$id_user'";
                     $user= mysqli_query($conn,$query);
                     $user= mysqli_fetch_assoc($user);
             ?>
@@ -63,7 +64,11 @@
             <div class="profile-right">
                 <div class="text-wrap">
                     <p>Dana didonasikan</p>
-                <p class="price">Rp. 500.000,-</p>
+                    <?php
+                        $dana = mysqli_query($conn,"SELECT SUM(nominal) as total FROM donasi where id_user = '$id_user' AND status = 'Diterima'");
+                        $dana = mysqli_fetch_array($dana);
+                    ?>
+                <p class="price">Rp. <?php echo $dana['total']; ?>,-</p>
                 </div>
             </div>
         </div>
@@ -97,15 +102,15 @@
                         <table>
                             <tr>
                                 <td>Nama</td>
-                                <td><input type="text" class="nama" placeholder="nama" value="<?php  echo $user['nama'];?>"></td>
+                                <td><input type="text" name="nama" placeholder="nama" value="<?php  echo $user['nama'];?>"></td>
                             </tr>
                             <tr>
                                 <td>Alamat</td>
-                                <td><input type="text" class="alamat" placeholder="alamat" value="<?php  echo $user['alamat'];?>"></td>
+                                <td><input type="text" name="alamat" placeholder="alamat" value="<?php  echo $user['alamat'];?>"></td>
                             </tr>
                             <tr>
                                 <td>No. Telp</td>
-                                <td><input type="text" class="no" placeholder="no telepon" value="<?php  echo $user['telepon'];?>"></td>
+                                <td><input type="text" name="telepon" placeholder="no telepon" value="<?php  echo $user['telepon'];?>"></td>
                             </tr>
                             <tr>
                                 <td>Jenis Kelamin</td>

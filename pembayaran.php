@@ -65,12 +65,13 @@
                     <form action="aksipembayaran.php" class="register" method="POST">
                         <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
                         <input type="hidden" name="id_campaign" value="<?php echo $id_campaign; ?>">
-                        <input type="number" id="nominal" placeholder="Nominal (Rp)">
-                        <textarea id="pesan" cols="30" rows="10" placeholder="Pesan Yang disampaikan"></textarea> 
+                        <input type="number" name="nominal" placeholder="Nominal (Rp)">
+                        <textarea name="pesan" id="pesan" cols="30" rows="10" placeholder="Pesan Yang disampaikan"></textarea> 
                         Transfer Pembayaran : <br><br>
-                        <img src="images/tf.png" alt="rekening bank">   
-                    </form><br>
-                    <button onclick="submitdata()">Donasi</button>
+                        <img src="images/tf.png" alt="rekening bank">  
+                        <input type="submit" value="Donasi" class="button-input"> 
+                    </form>
+                    
                     <a href="konfirmasi.php"><button>Konfirmasi</button></a>
                 </div>
             </div> 

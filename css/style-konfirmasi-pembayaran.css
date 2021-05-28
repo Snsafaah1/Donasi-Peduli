@@ -85,6 +85,23 @@ body {
 .form button:active{
     background: rgb(5, 68, 16);
 }
+.button-input{
+    font-family:Verdana !important;
+    text-transform: uppercase !important;
+    outline: rgb(139, 0, 76) !important;
+    background: rgb(137, 245, 142) !important;
+    width: 100% !important;
+    border: 10px !important;
+    margin: 3px 0px 10px !important;
+    padding: 15px !important;
+    color: rgb(114, 103, 124) !important;
+    cursor: pointer !important;
+    border-radius: 4px !important;
+}
+.button-input:hover,
+.button-input:active{
+    background: rgb(5, 68, 16) !important;
+}
 .clear{
     clear: both;
 }

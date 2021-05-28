@@ -21,7 +21,8 @@
                 session_start();
                 if(isset($_SESSION["email"])) {
                     $email = $_SESSION["email"];
-                    $query= "SELECT * FROM user where email = '$email' ";
+                    $id_user = $_SESSION["id_user"];
+                    $query= "SELECT * FROM user where id_user = '$id_user' ";
                     $hasil= mysqli_query($conn,$query);
                     $hasil= mysqli_fetch_assoc($hasil);
             ?>
@@ -63,7 +64,11 @@
             <div class="profile-right">
                 <div class="text-wrap">
                     <p>Dana didonasikan</p>
-                <p class="price">Rp. 500.000,-</p>
+                    <?php
+                        $dana = mysqli_query($conn,"SELECT SUM(nominal) as total FROM donasi where id_user = '$id_user' AND status = 'Diterima'");
+                        $dana = mysqli_fetch_array($dana);
+                    ?>
+                <p class="price">Rp. <?php echo $dana['total']; ?>,-</p>
                 </div>
             </div>
         </div>
