@@ -36,7 +36,6 @@
             <?php
 
                 }else{
-                    header("location: login.php");
             ?>
                 <a href="login.php">Masuk</a>
                 <a href="login.php?p=daftar" class="daftar">Daftar</a>
@@ -49,7 +48,6 @@
         <div class="kiri">
             <?php
                 $id_campaign = $_GET['id_campaign'];
-                $id_user = $_SESSION['id_user'];
                 $campaign = mysqli_query($conn,"SELECT * FROM campaign where id_campaign = '$id_campaign' ");
                 $campaign = mysqli_fetch_array($campaign);
              ?>

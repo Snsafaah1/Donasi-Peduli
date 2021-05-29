@@ -66,17 +66,22 @@
 						<div class="text-campaign">
 							<p><?php echo $campaign['judul']; ?></p>
 							<div class="back-persen">
-								<hr width="70%">
-							</div>
-							<div>
 								<?php 
 									$id_campaign=$campaign['id_campaign'];
 									$query = mysqli_query($conn,"SELECT sum(nominal) as total, count(*) as jumlah from donasi where id_campaign = '$id_campaign' AND status = 'Diterima' ");
+									$tanggal_buat = $campaign['tanggal_buat'];
+									$batas= $campaign['batas_waktu'];
+									$selisih =selisih($campaign['tanggal_buat'],$campaign['batas_waktu']);
+									$selisih_sekarang =selisih(date("Y-m-d h:i:s"),$campaign['batas_waktu']);
+									$persen = 100/$selisih*$selisih_sekarang;
 									$total = mysqli_fetch_array($query);
 									if($total['jumlah'] < 1){
 										$total['total'] = 0;
 									}  
 								?>
+								<hr width="<?php echo $persen."%"; ?>">
+							</div>
+							<div>
 								<span>Terkumpul</span><span class="right-float">Donatur</span>
 							</div>
 							<div>
