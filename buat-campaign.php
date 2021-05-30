@@ -23,7 +23,6 @@
 		<div class="navbar">
 	 	<div class="navbar-right">
 	 		<a href="index.php" class="logo">Peduli.ID</a>
-	 		<a href="">FAQ</a>
 	 		<?php
 	 			session_start();
 	 			if(isset($_SESSION["email"])) {
