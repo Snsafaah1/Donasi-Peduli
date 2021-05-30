@@ -18,7 +18,6 @@
         <div class="navbar">
         <div class="navbar-right">
             <a href="index.php" class="logo">Peduli.ID</a>
-            <a href="">FAQ</a>
             <?php
                 session_start();
                 if(isset($_SESSION["email"])) {
@@ -37,7 +36,6 @@
             <?php
 
                 }else{
-                    header("location: login.php");
             ?>
                 <a href="login.php">Masuk</a>
                 <a href="login.php?p=daftar" class="daftar">Daftar</a>
@@ -48,21 +46,30 @@
         </div>
     </div>
         <div class="kiri">
-            <h3>Donasi bencana indonesia tanah longsor</h3>
-            <img src="images/campaign1.jpg" alt="">
+            <?php
+                $id_campaign = $_GET['id_campaign'];
+                $campaign = mysqli_query($conn,"SELECT * FROM campaign where id_campaign = '$id_campaign' ");
+                $campaign = mysqli_fetch_array($campaign);
+             ?>
+            <h3><?php echo $campaign['judul'] ?></h3><br>
+            <h5>Keterangan: <?php echo $campaign['alasan_penggalangan']; ?></h5><br>
+            <img src="foto/<?php echo $campaign['foto']; ?>" alt="" height="300px">
         </div> 
         <div class="kanan">
             <div class="kotak">
                 <div class="form">
-                    <h3>Mohon Isi Formulir Donasi</h3>
-                    <form class="register">
-                        <input type="number" id="nominal" placeholder="Nominal (Rp)">
-                        <textarea id="pesan" cols="30" rows="10" placeholder="Pesan Yang disampaikan"></textarea> 
-                        Transfer Pembayaran : <br>
-                        <img src="images/tf.png" alt="rekening bank">   
+                    <h3>Mohon Isi Formulir Donasi</h3><br>
+                    <form action="aksipembayaran.php" class="register" method="POST">
+                        <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
+                        <input type="hidden" name="id_campaign" value="<?php echo $id_campaign; ?>">
+                        <input type="number" name="nominal" placeholder="Nominal (Rp)">
+                        <textarea name="pesan" id="pesan" cols="30" rows="10" placeholder="Pesan Yang disampaikan"></textarea> 
+                        Transfer Pembayaran : <br><br>
+                        <img src="images/tf.png" alt="rekening bank">  
+                        <input type="submit" value="Donasi" class="button-input"> 
                     </form>
-                    <button onclick="submitdata()">Donasi</button>
-                    <a href="konfirmasi.html"><button>Konfirmasi</button></a>
+                    
+                    <a href="konfirmasi.php"><button>Konfirmasi</button></a>
                 </div>
             </div> 
         </div>

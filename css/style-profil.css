@@ -158,7 +158,12 @@
 .tombol-wrap > div{
     margin: 10px;
 }
-.tombol-wrap > div a{
+.tombol-wrap > div .cancel-tombol{
+    border-radius: 15px;
+    padding: 10px;
+    text-decoration: none;
+}
+.tombol-wrap > div .save-tombol{
     border-radius: 15px;
     padding: 10px;
     text-decoration: none;

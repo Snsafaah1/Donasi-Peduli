@@ -1,138 +1,20 @@
 <?php
 	include("config.php");
+	include 'function.php';
  ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Peduli.ID</title>
-	<style type="text/css">
-		.back{
-			background-image: linear-gradient(#9ebfc6, #ffffff);
-			width: 100%;
-			min-height: 500px;
-
-		}
-		*{
-			margin: 0;
-			padding:0;
-		}
-		.navbar{
-			padding: 0 150px;
-			color: white;
-			background-color: black;
-			overflow: hidden;
-		}
-		.navbar a{
-			float: left;
-			color: #f2f2f2;
-			text-align: center;
-			padding: 10px 12px;
-			text-decoration: none;
-			font-size: 17px;
-		}
-		.navbar-right{
-			margin: 5px;
-			float: right;
-		}
-		.navbar .logo{
-			color: #1187a0;
-			font-size: 20px;
-		}
-		.navbar .daftar{
-			background-color: #b6e13a;
-			border-radius: 0px;
-		}
-		.jumbotron{
-			display: flex;
-			justify-content: center;
-		}
-		.jumbotron>div{
-			max-height: 300px;
-		}
-
-		.img-jumbotron img{
-			width: 300px;
-			height: 300px;
-		}
-		.text-jumbotron{
-			padding-top: 100px;
-			font-size: 17px;
-		}
-		.text-jumboton h3{
-			color: #81b2bc;
-		}
-		.text-jumbotron a{
-			text-decoration: none;
-			color: black;
-			background-color: #b6e13a;
-			padding: 10px;
-			display: inline-block;
-			border-radius: 15px;
-		}
-		.konten{
-			display: flex;
-			justify-content: center;
-		}
-		.wrap{
-			border-radius: 20px;
-			padding: 10px;
-			min-height: 200px;
-			width: 900px;
-			background-color: #acbec7;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-		.campaign{
-			cursor: pointer;
-			border-radius: 15px;
-			background-color: white;
-			width: 200px;
-			font-size: 17px;
-			margin: 10px;
-		}
-		.campaign img{
-			width: 200px;
-			border-radius: 15px;
-		}
-		.campaign .text-campaign{
-			padding: 5px;
-		}
-		.right-float{
-			float: right;
-		}
-		.campaign hr{
-			background-color: #1929ba;
-			height: 10px;
-		}
-		.selengkapnya{
-			background-color: transparent;
-		}
-		.selengkapnya-btn{
-			padding: 5px;
-			border-radius: 15px;
-			text-decoration: none;
-			background-color: red;
-			color: black;
-			font-size: 17px;
-		}
-		.selengkapnya-btn:hover{
-			background-color: #ff1c1c;
-		}
-		.back-persen{
-			background-color: #00d1c7;
-			padding:0;
-			margin: 0;
-		}
-	</style>
+	<link rel="stylesheet" href="css/style-home.css">
 	<link rel="stylesheet" href="css/style-profil.css">
+	
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
 	<div class="navbar">
 	 	<div class="navbar-right">
 	 		<a href="index.php" class="logo">Peduli.ID</a>
-	 		<a href="">FAQ</a>
 	 		<?php
 	 			session_start();
 	 			if(isset($_SESSION["email"])) {
@@ -174,66 +56,54 @@
 		</div>
 		<div class="konten">
 			<div class="wrap">
-				<div class="campaign">
-					<img src="images/campaign1.jpg">
-					<div class="text-campaign">
-						<p>Donasi bencana indonesia tanah longsor</p>
-						<div class="back-persen">
-							<hr width="70%">
-						</div>
-						<div>
-							<span>Terkumpul</span><span class="right-float">Donatur</span>
-						</div>
-						<div>
-							<span>Rp.852.000</span><span class="right-float">45</span>
-						</div>
-					</div>
-				</div>
-				<div class="campaign">
-					<img src="images/campaign1.jpg">
-					<div class="text-campaign">
-						<p>Donasi bencana indonesia tanah longsor</p>
-
-
-						<div class="back-persen">
-							<hr width="70%">
-						</div>
-						<div>
-							<span>Terkumpul</span><span class="right-float">Donatur</span>
-						</div>
-						<div>
-							<span>Rp.852.000</span><span class="right-float">45</span>
-						</div>
-					</div>
-				</div>
-				<div class="campaign">
-					<img src="images/campaign1.jpg">
-					<div class="text-campaign">
-						<p>Donasi bencana indonesia tanah longsor</p>
-						<div class="back-persen">
-							<hr width="70%">
-						</div>
-						<div>
-							<span>Terkumpul</span><span class="right-float">Donatur</span>
-						</div>
-						<div>
-							<span>Rp.852.000</span><span class="right-float">45</span>
+				<?php
+				$query = mysqli_query($conn,"SELECT * FROM campaign ORDER BY tanggal_buat DESC LIMIT 0,3");
+				?>
+				<?php
+				foreach ($query as $campaign) { ?>
+					<div class="campaign" onclick="donasi('<?php echo $campaign['id_campaign']; ?>')">
+						<img src="foto/<?php echo $campaign['foto']; ?>" height="150px">
+						<div class="text-campaign">
+							<p><?php echo $campaign['judul']; ?></p>
+							<div class="back-persen">
+								<?php 
+									$id_campaign=$campaign['id_campaign'];
+									$query = mysqli_query($conn,"SELECT sum(nominal) as total, count(*) as jumlah from donasi where id_campaign = '$id_campaign' AND status = 'Diterima' ");
+									$tanggal_buat = $campaign['tanggal_buat'];
+									$batas= $campaign['batas_waktu'];
+									$selisih =selisih($campaign['tanggal_buat'],$campaign['batas_waktu']);
+									$selisih_sekarang =selisih(date("Y-m-d h:i:s"),$campaign['batas_waktu']);
+									$persen = 100/$selisih*$selisih_sekarang;
+									$total = mysqli_fetch_array($query);
+									if($total['jumlah'] < 1){
+										$total['total'] = 0;
+									}  
+								?>
+								<hr width="<?php echo $persen."%"; ?>">
+							</div>
+							<div>
+								<span>Terkumpul</span><span class="right-float">Donatur</span>
+							</div>
+							<div>
+								<span><?php echo rupiah($total['total']); ?>,-</span><span class="right-float"><?php echo $total['jumlah'] ?></span>
+							</div>
 						</div>
 					</div>
-				</div>
+				<?php 
+					}
+				 ?>
 				<div class="campaign selengkapnya">
-					<a href="#" class="selengkapnya-btn">Tampilkan lebih banyak</a>
+					<a href="campaign.php" class="selengkapnya-btn">Tampilkan lebih banyak</a>
 				</div>
 			</div>
 		</div>
 	</div>
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.campaign').click(function(){
-			window.location.href = 'pembayaran.php';
-		});
-	});
+<script type="application/javascript">
+
+	function donasi(id){
+			window.location.href = 'pembayaran.php?id_campaign='+id;
+	}
 </script>
 </html>

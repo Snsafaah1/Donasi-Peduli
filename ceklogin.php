@@ -10,6 +10,7 @@
 		//bener
 		session_start();
 		$_SESSION["email"] = $email;
+		$_SESSION["id_user"] = $hasil['id_user'];
 		header("location: index.php");
 	}else{
 		//jika salah

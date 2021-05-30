@@ -25,7 +25,7 @@ body {
     /* margin-top: -70px; */
 }
 .form{
-    background: rgb(31, 187, 226);
+    background:rgb(183, 233, 241);
     max-width: 100%;
     margin: 5% auto 3%;
     padding: 3px 45px 50px;
@@ -72,18 +72,35 @@ body {
     font-family:Verdana;
     text-transform: uppercase;
     outline: rgb(139, 0, 76);
-    background: rgb(9, 245, 60);
+    background: rgb(137, 245, 142);
     width: 100%;
     border: 10px;
     margin: 3px 0px 10px;
     padding: 15px;
-    color: rgb(247, 246, 248);
+    color: rgb(114, 103, 124);
     cursor: pointer;
     border-radius: 4px;
 }
 .form button:hover,
 .form button:active{
     background: rgb(5, 68, 16);
+}
+.button-input{
+    font-family:Verdana !important;
+    text-transform: uppercase !important;
+    outline: rgb(139, 0, 76) !important;
+    background: rgb(137, 245, 142) !important;
+    width: 100% !important;
+    border: 10px !important;
+    margin: 3px 0px 10px !important;
+    padding: 15px !important;
+    color: rgb(114, 103, 124) !important;
+    cursor: pointer !important;
+    border-radius: 4px !important;
+}
+.button-input:hover,
+.button-input:active{
+    background: rgb(5, 68, 16) !important;
 }
 .clear{
     clear: both;
@@ -96,8 +113,13 @@ body {
     height: auto;   
 }
 .kiri h3{
-    text-align: center;
+    text-align: center;   
 }
+
+.kiri h5{
+    text-align:center;
+}
+
 img
 {
     width: 600px;

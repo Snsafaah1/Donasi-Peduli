@@ -1,0 +1,10 @@
+status campaign
+-Proses Verifikasi
+-Diterima
+-Ditolak
+
+status donasi
+-Belum Transfer
+-Proses Konfirmasi
+-Diterima
+-Ditolak

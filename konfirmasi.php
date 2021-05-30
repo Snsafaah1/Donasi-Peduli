@@ -14,7 +14,6 @@
    <div class="navbar">
         <div class="navbar-right">
             <a href="index.php" class="logo">Peduli.ID</a>
-            <a href="">FAQ</a>
             <?php
                 session_start();
                 if(isset($_SESSION["email"])) {
@@ -44,14 +43,14 @@
     </div>
     <div class="kanan"><div class="kotak">
         <div class="form">
-            <h3>Konfirmasi Pembayaran</h3>
-            <form class="regiser">
-                <input type="text" placeholder="Nama Donatur">
-                <input type="text" placeholder="Rekening atas Nama">
-                <input type="number" id= "nominal"placeholder="Nominal (Rp)">
+            <h3>Konfirmasi Pembayaran</h3><br>
+            <form class="regiser" action="aksikonfirmasi.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="id_donasi" value="<?php echo $_GET['id_donasi'] ?>">
+                <input type="text" placeholder="Rekening atas Nama" name="nama">
+                <input type="number" id="nominal" name="nominal" placeholder="Nominal (Rp)">
                 Masukkan Bukti Pembayaran (JPEG,PNG) <br>
-                <input id="upload" type="file" placeholder="Masukkan Bukti Pembayaran">
-                <button onclick="confirm()">Konfirmasi</button>
+                <input id="upload" type="file" name="foto" placeholder="Masukkan Bukti Pembayaran">
+                <input type="submit" value="Konfirmasi" class="button-input">
                 <img id="thank"src="images/hiasan.jpg" alt="">
             </form>
         </div>
