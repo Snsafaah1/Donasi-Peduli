@@ -1,35 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
-    <link rel="stylesheet" href="css/style-profil.css">
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/admin.css">
-</head>
-<body>
-    <div class="navbar">
-        <div class="navbar-right">
-            <a href="index.php" class="logo">Peduli.ID</a>
-            <a href="login.php">Masuk</a>
-            <a href="login.php?p=daftar" class="daftar">Daftar</a>
-         </div>
-        </div>
+<?php
 
-    <div class="w2-sidebar w3-bar-block" style="width:15%">
-        <div class="">
-            <h3 class="w3-bar-item">Menu</h3>
-            <a href="#" class="w3-bar-item w3-button"><i class="far fa-user-circle"></i> Dashboard</a>
-            <a href="#" class="w3-bar-item w3-button"><i class="fas fa-file-import"></i> Permohonan</a>
-            <a href="#" class="w3-bar-item w3-button"><i class="fas fa-file-import"></i> Riwayat Permohonan</a>
-            <a href="#" class="w3-bar-item w3-button"><i class="fas fa-sign-out-alt"></i>   Logout</a>
-        </div>
-    </div> 
-     <!-- Page Content -->
-     <div style="margin-left:15%">
-        
-        <div class="w3-container ms-xl-5 mt-5">
-            <h2>Permohonan Akta Kematian    </h2>
-        </div>
+    header("location: admin_login.php");
+?>
