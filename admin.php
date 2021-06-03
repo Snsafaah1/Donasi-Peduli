@@ -7,7 +7,7 @@
     <title>Admin</title>
     <link rel="stylesheet" href="css/style-profil.css">
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/admin.css.css">
+    <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
     <div class="navbar">

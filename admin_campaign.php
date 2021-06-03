@@ -1,3 +1,15 @@
+<?php 
+  include 'config.php';
+  session_start();
+  if(isset($_SESSION["id_admin"])) {
+    $id_admin = $_SESSION["id_admin"];
+    $query= "SELECT * FROM admin where id_admin = '$id_admin' ";
+    $hasil= mysqli_query($conn,$query);
+    $hasil= mysqli_fetch_assoc($hasil);
+  }else{
+    header("location: admin_login.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +20,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Admin - Donasi</title>
+  <title>Admin - Campaign</title>
 
    <!-- Ganti Icon Website-->
   <link rel="Icon" href="">
@@ -38,18 +50,18 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
-
+      
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="admin_donasi.html">
+      <li class="nav-item">
+        <a class="nav-link" href="admin_donasi.php">
           <i class="far fa-handshake"></i>
-          <span>Donasi</span></a>
+          <span>Konfirmasi Donasi</span></a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="admin_campaign.html">
+      <li class="nav-item active">
+        <a class="nav-link" href="admin_campaign.php">
           <i class="fas fa-book"></i>
-          <span>Campaign</span></a>
+          <span>Konfirmasi Campaign</span></a>
       </li>
 
       <hr class="sidebar-divider">
@@ -82,12 +94,12 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">BABY CAKEP</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $hasil['nama']; ?></span>
                 <img class="img-profile rounded-circle" src="icon/undraw_profile.svg">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="admin_login.html" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="admin_logout.php" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -104,12 +116,12 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-2">
-            <h1 class="h3 mb-0 text-gray-800">Confirm Donasi</h1>
+            <h1 class="h3 mb-0 text-gray-800">Confirm Campaign</h1>
           </div>
 
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">DataTables Confirm Donasi</h6>
+              <h6 class="m-0 font-weight-bold text-primary">DataTables Confirm Campaign</h6>
             </div>
 
             <div class="container mt-5 mb-5">
@@ -120,43 +132,50 @@
                       <th>No</th>
                       <th>User</th>
                       <th>Campaign</th>
-                      <th>Donasi</th>
+                      <th>Batas Waktu</th>
                       <th>Foto</th>
                       <th>Confirm</th>
                     </tr>
                   </thead>
 
                   <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>BABY SOK-SOKAN</td>
-                        <td>5 langkah dari rumah</td>
-                        <td>Rp. 100.000,-</td>
-                        <td class="w-25">
-                          <img src="images/spongebob.png" width="100%">
-                        </td>
-                        <td><a href="#" onClick="return confirm('Apakah anda ingin menghapus data ini ?');" class="btn btn-success" type="submit" name="delete">Accepted</a></td>
+                  <?php
+                          $query = mysqli_query($conn,"SELECT * FROM campaign INNER JOIN user where campaign.id_user = user.id_user ");
+                            if(mysqli_num_rows($query)>0){
+                                foreach ($query as $campaign) { ?>
+                                <tr>
+                                  <td><?php echo $campaign['id_campaign'] ?></td>
+                                  <td><?php echo $campaign['nama']; ?></td>
+                                  <td><?php echo $campaign['judul']; ?></td>
+                                  <td><?php echo $campaign['batas_waktu']; ?></td>
+                                  <td class="w-25">
+                                    <img src="foto/<?php echo $campaign['foto']; ?>" width="100%">
+                                  </td>
+                                  <td style="text-align: center;">
+                                    <?php 
+                                      if($campaign['status'] == "Proses Verifikasi"){
+                                    ?>
+                                      <a href="aksiupdatecampaign.php?id_campaign=<?php echo $campaign['id_campaign'] ?>&status=Diterima" onClick="return confirm('Apakah anda ingin menghapus data ini ?');" class="btn btn-success" type="submit" name="delete">Accepted</a>
+                                    <a href="aksiupdatecampaign.php?id_campaign=<?php echo $campaign['id_campaign'] ?>&status=Ditolak" onClick="return confirm('Apakah anda ingin menghapus data ini ?');" class="btn btn-danger" type="submit" name="delete">Reject</a>
+                                    <?php
+                                      }else{
+                                        echo $campaign['status'];
+                                      }
+                                    ?>
+                                  </td>
+                                </tr>
+                                 <?php
+                                }
+                            }else{ ?>
+
+<tr>
+                        <td colspan="6" style="text-align:center; vertical-align:middle">Data TIdak ada</td>
                       </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>BABY preman kampung</td>
-                        <td>5 langkah dari rumah</td>
-                        <td>Rp. 100.000,-</td>
-                        <td class="w-25">
-                          <img src="images/spongebob.png" width="100%">
-                        </td>
-                        <td><a href="#" onClick="return confirm('Apakah anda ingin menghapus data ini ?');" class="btn btn-success" type="submit" name="delete">Accepted</a></td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>BABY anak metal</td>
-                        <td>5 langkah dari rumah</td>
-                        <td>Rp. 100.000,-</td>
-                        <td class="w-25">
-                          <img src="images/spongebob.png" width="100%">
-                        </td>
-                        <td><a href="#" onClick="return confirm('Apakah anda ingin menghapus data ini ?');" class="btn btn-success" type="submit" name="delete">Accepted</a></td>
-                      </tr>
+                        <?php
+                            }
+                         ?>
+                      
+                      
                   </tbody>
                 </table>
 
@@ -199,7 +218,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
               <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-              <a class="btn btn-primary" href="admin_login.html">Logout</a>
+              <a class="btn btn-primary" href="admin_logout.php">Logout</a>
             </div>
           </div>
         </div>

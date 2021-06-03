@@ -23,14 +23,14 @@
             </div>
 
             <div class="login">
-                <form action=" " method="POST" enctype="multipart/form-data">
+                <form action="aksi_admin_login.php" method="POST" enctype="multipart/form-data">
                     <input type="username" name="username" id="username" required=" " placeholder="Username" minlength="3" maxlength="50">
                     <br><br>
 
                     <input type="password" name="password" id="password" required=" " placeholder="Password" minlength="3" minlength="50">
                     <br><br>
 
-                    <button type="submit" name="masuk">Login</button>
+                    <input type="submit" name="masuk" value="Login">
                 </form>
             </div>
             
