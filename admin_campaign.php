@@ -20,7 +20,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Admin - Campaign</title>
+  <title>Admin-Campaign</title>
 
    <!-- Ganti Icon Website-->
   <link rel="Icon" href="">
