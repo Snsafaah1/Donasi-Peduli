@@ -16,7 +16,10 @@
 
 		if($hasil == TRUE){
 			session_start();
-		$_SESSION["email"] = $email;
+			$_SESSION["email"] = $email;
+			$query = mysqli_query($conn,"SELECT * FROM user where email = '$email'");
+			$query = mysqli_fetch_array($query);
+			$_SESSION["id_user"] = $query['id_user'];
 			header('location: profil.php');
 		}
 	}else{
