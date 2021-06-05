@@ -72,8 +72,11 @@
 									$tanggal_buat = $campaign['tanggal_buat'];
 									$batas= $campaign['batas_waktu'];
 									$selisih =selisih($campaign['tanggal_buat'],$campaign['batas_waktu']);
-									$selisih_sekarang =selisih(date("Y-m-d h:i:s"),$campaign['batas_waktu']);
+									$selisih_sekarang =selisih(date("Y-m-d h:i:s"),$campaign['tanggal_buat']);
 									$persen = 100/$selisih*$selisih_sekarang;
+									if($persen>100){
+										$persen=100;
+									}
 									$total = mysqli_fetch_array($query);
 									if($total['jumlah'] < 1){
 										$total['total'] = 0;
