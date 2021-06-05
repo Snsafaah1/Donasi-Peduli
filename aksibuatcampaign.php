@@ -35,7 +35,7 @@
 
 		$query= "INSERT INTO 
 		campaign (id_user, id_kategori, batas_waktu, judul, pekerjaan, medsos, alasan_penggalangan, tempat_tinggal, kondisi_terkini, instansi, profil_diri, penerima_manfaat, ajakan_singkat, foto, nomor_hp, status) 
-		VALUES ('$id_user','$kategori','$waktu','$judul', '$pekerjaan','$medson','$rencana','$tempat','$kondisi','$instansi','$diri','$penerima','$ajakan','$namaFile','$nomor','proses')";
+		VALUES ('$id_user','$kategori','$waktu','$judul', '$pekerjaan','$medson','$rencana','$tempat','$kondisi','$instansi','$diri','$penerima','$ajakan','$namaFile','$nomor','Proses Verifikasi')";
 		$insert= mysqli_query($conn,$query);
 		if($insert == TRUE){
 			header('location: index.php');
